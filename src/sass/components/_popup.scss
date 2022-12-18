@@ -1,0 +1,111 @@
+.popup {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.574);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &.active &__content {
+    transform: scale(1);
+    transition: transform 0.3s 0.2s;
+  }
+
+  &__content {
+    background-color: white;
+    display: flex;
+    position: relative;
+    margin: 0 auto;
+    transform: scale(0);
+    transition: transform .3s;
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
+  }
+
+  &__cancel-btn {
+    @include button-reset;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    margin: 1rem 1.7rem;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--color-primary);
+    transition: color 0.15s;
+
+    &:hover {
+      color: red;
+    }
+  }
+  &__images {
+    flex: 0 0 33%;
+    display: flex;
+    flex-direction: column;
+    
+    @include respond(phone) {
+      flex-direction: row;
+      order: 1;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include respond(phone) {
+      height: auto;
+      min-height: 100%;
+    }
+
+  }
+
+  &__text-area {
+    padding: 9rem 4rem;
+    flex: 1;
+    align-self: center;
+
+    @include respond(phone) {
+      padding: 6rem 4rem 2rem;
+    }
+
+  }
+
+  .heading-secondary {
+    text-align: start !important;
+    margin-bottom: 2rem;
+  }
+
+  .heading-tertiary {
+    margin-bottom: 1.4rem;
+  }
+
+  &__text-container {
+    margin-bottom: 2rem;
+
+    .paragraph {
+      column-count: 2;
+      column-gap: 4rem;
+
+      column-rule: 1px solid #ddd;
+      hyphens: auto;
+
+      @include respond(tab-port) {
+        column-count: 1;
+      }
+    }
+  }
+}

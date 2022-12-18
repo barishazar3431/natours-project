@@ -1,0 +1,119 @@
+.start-booking {
+  background: linear-gradient(105deg, #ffffffd2 50%, transparent 50%),
+    center / cover url('../img/nat-10.jpg');
+  margin: 0 9rem;
+  padding: 6rem 6rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.304);
+  border-radius: 3px;
+
+  @include respond(tab-land) {
+    background: linear-gradient(105deg, #ffffffd2 70%, transparent 70%),
+    center / cover url('../img/nat-10.jpg');
+  }
+  
+  @include respond(tab-port) {
+  }
+  
+  @include respond(phone) {
+    background: linear-gradient(#ffffffd2, #ffffffd2),
+      center / cover url('../img/nat-10.jpg');
+    margin: 0;
+  }
+
+  .heading-secondary {
+    text-align: start;
+    width: max-content;
+  }
+
+  &__form {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6rem;
+
+    @include respond(tab-land) {
+      width: 70%;
+    }
+
+    @include respond(phone) {
+      width: 100%;
+    }
+  }
+
+  &__input {
+    font-size: 1.5rem;
+    padding: 2rem 2rem 0.5rem;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.526);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 100%;
+    display: block;
+    transition: border 0.15s;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.168);
+      border-bottom: 3px solid var(--color-primary);
+
+      &:invalid {
+        border-bottom: 3px solid red;
+      }
+    }
+  }
+
+  &__form-group {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+
+    input[type='radio'] {
+      appearance: none;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      outline-offset: 3px;
+      outline: 4px solid var(--color-primary);
+      margin-right: 1.3rem;
+
+      &:checked {
+        background-color: var(--color-primary);
+      }
+    }
+
+    &[data-type="radio"] {
+      display: flex;
+      gap: 4rem;
+
+      @include respond(phone) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  // &__radio-label {
+  //   &:not(:last-child) {
+  //     margin-right: 5rem;
+  //   }
+  // }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    transition: transform 0.15s, font-size 0.15s;
+    line-height: 1.2;
+  }
+
+  &__input:not(:placeholder-shown) + &__label,
+  &__input:focus + &__label {
+    transform: translateY(-2.4rem);
+    font-size: 1.2rem;
+  }
+
+  .primary-btn {
+    align-self: flex-start;
+  }
+}
